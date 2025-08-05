@@ -4,6 +4,7 @@ import { useAppSelector } from "@/store/hooks";
 import type { Slot } from "@/types/slot.types";
 import dayjs from "dayjs";
 import { ProviderSlotControls } from "./ProviderSlotControls";
+import { BookButton } from "../bookings/BookButton";
 
 type Props = {
   slot: Slot;
@@ -38,11 +39,13 @@ export const SlotCard = ({ slot }: Props) => {
         </div>
       </CardContent>
 
-      {isProvider && (
-        <CardFooter className="flex justify-end">
+      <CardFooter className="flex w-full justify-end">
+        {isProvider ? (
           <ProviderSlotControls slot={slot} />
-        </CardFooter>
-      )}
+        ) : (
+          <BookButton serviceId={slot.service.id} slotId={slot.id} />
+        )}
+      </CardFooter>
     </Card>
   );
 };
