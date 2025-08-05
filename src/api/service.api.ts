@@ -60,3 +60,8 @@ export const updateService = async (serviceId: string, formData: FormData) => {
   );
   return res.data.data;
 };
+
+export const deleteService = async (serviceId: string) => {
+  const res = await api.delete(`/services/${serviceId}`);
+  return res.data;
+};

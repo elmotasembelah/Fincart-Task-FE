@@ -1,4 +1,3 @@
-// src/hooks/slot/useDeleteSlot.ts
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteSlot } from "@/api/slot.api";
 import { toast } from "sonner";

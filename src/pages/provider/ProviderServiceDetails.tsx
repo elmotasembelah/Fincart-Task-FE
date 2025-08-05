@@ -5,6 +5,7 @@ import { useService } from "@/hooks/services/useService";
 import { ServiceInfoCard } from "@/features/services/ServiceInfoCard";
 import { ServiceSlotList } from "@/features/slots/ServiceSlotsList";
 import { AddSlotModal } from "@/features/slots/AddSlotModal";
+import { DeleteServiceButton } from "@/features/services/DeleteServiceButton";
 
 export default function ProviderServiceDetails() {
   const { id } = useParams();
@@ -23,7 +24,10 @@ export default function ProviderServiceDetails() {
     <div className="mx-auto max-w-4xl space-y-6 p-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Service Details</h1>
-        <Button onClick={handleEditClick}>Edit Service</Button>
+        <div className="flex gap-2">
+          <Button onClick={handleEditClick}>Edit Service</Button>
+          <DeleteServiceButton serviceId={id} />
+        </div>
       </div>
 
       <ServiceInfoCard service={service} />
