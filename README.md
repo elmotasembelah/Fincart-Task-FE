@@ -17,6 +17,18 @@ This is the frontend for an online consultation booking system, built with **Rea
 
 ---
 
+## Demo Videos
+
+To better understand the flow of the application, here are demo videos showcasing the role-based functionalities:
+
+- **Provider Demo**
+  [Watch Provider Demo](https://drive.google.com/file/d/1KTRzcn9Gzj85RXV4cl21HqiyoxFDkjfL/view?usp=sharing)
+
+- **User Demo**
+  [Watch User Demo](https://drive.google.com/file/d/1qipXMg4QJ4yo_cz-dq_j2QIGE5hhVRub/view?usp=sharing)
+
+---
+
 ## Features
 
 ### Authentication
