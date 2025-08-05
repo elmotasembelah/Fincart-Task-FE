@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+# Frontend – Online Consultation Booking System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for an online consultation booking system, built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS**. It supports both **users** and **providers**, with role-based interfaces for managing services, slots, and bookings.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📂 Tech Stack
 
-## Expanding the ESLint configuration
+- **React 19 + Vite**
+- **TypeScript**
+- **Redux Toolkit** – global state management
+- **React Query** – data fetching and caching
+- **Shadcn UI** – modern and accessible UI components
+- **React Hook Form + Zod** – form handling and validation
+- **Axios** – API client
+- **Sonner** – toast notifications
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Authentication
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Login, register, logout with JWT stored in cookies
+- `/me` endpoint used to persist and hydrate user state
+
+### Role-Based Access
+
+- `user`: Book and manage appointments
+- `provider`: Create and manage services and slots
+
+### Services
+
+- Create/edit service with image upload (preview included)
+- Paginated service listing
+- Image rendering from backend `imageUrl`
+
+### Slots
+
+- Create slot (modal form with UTC time input)
+- View slots (status: booked or available)
+- Edit or delete slots (for providers only)
+
+### Bookings
+
+- Users can book available slots
+- Users can cancel bookings
+- Status and time displayed clearly
+
+---
+
+## Getting Started
+
+### Installation
+
+```bash
+cd frontend
+cp .env.example .env    # Add VITE_API_BASE_URL, etc.
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will start on [http://localhost:5173](http://localhost:5173).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Folder Structure
+
 ```
+src/
+│
+├── api/                  # Axios instance and API functions
+├── components/           # UI components (shared and ui/)
+├── constants/            # Constant values in the ssytem (endpoints, ...))
+├── features/             # Feature-specific logic (auth, slots, bookings, etc.)
+├── hooks/                # Custom hooks (React Query, Redux)
+├── pages/                # Route-level components
+├── schemas/              # Zod schemas
+├── store/                # Redux setup and slices
+├── routes/               # App routing (React Router v6)
+├── types/                # TypeScript types
+```
+
+---
+
+## Available Scripts
+
+- `npm run dev` – Start development server
+- `npm run build` – Build for production
+- `npm run preview` – Preview production build locally
+
+---
+
+## Environment Variables
+
+`.env` file example:
+
+```
+VITE_API_BASE_URL=http://localhost:3000/api/v1
+```
+
+---
+
+Let me know if you also want deployment steps (e.g. with Vercel or Netlify).
